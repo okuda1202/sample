@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(id: params[:id]) #controllerから:idの値を取り出す find_by(id: 1)
+    @post = Post.find_by(id: params[:id]) #controllerから:idの値を取り出す find_by(id: 1)
   end
 
   def new
