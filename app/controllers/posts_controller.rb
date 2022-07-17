@@ -8,12 +8,17 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def create
     @post = Post.new(content: params[:cont])
-    @post.save
-    redirect_to("/posts/index")
+    if @post.save
+      flash[:notice] = "投稿したちい"
+      redirect_to("/posts/index")
+    else
+      render("posts/new")
+    end
   end
 
   def edit
@@ -23,13 +28,21 @@ class PostsController < ApplicationController
   def update
     @post = Post.find_by(id: params[:id])
     @post.content = params[:content]
-    @post.save
-    redirect_to("/posts/index")
+    if @post.save
+      flash[:notice] = "編集したちい"
+      redirect_to("/posts/index")
+    else
+      render("posts/edit") #renderを使うとdef edit経由せずにeditHTMLに行けるので入力した文字が消えない
+    end
   end
 
   def destroy
     @post = Post.find_by(id: params[:id])
     @post.destroy
+
+    flash[:notice] = "消しちゃったってコト⁉"
     redirect_to("/posts/index")
   end
+
+
 end
