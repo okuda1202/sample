@@ -1,7 +1,7 @@
 databases:
   - name: chiikawa-fanclub
     databaseName: chiikawa-db
-    user: okuoku
+    user: chiikawa_db_user
     region: singapore
 
 services:
