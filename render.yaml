@@ -16,5 +16,5 @@ services:
         fromDatabase:
           name: render_app
           property: connectionString
-      - key: <%= ENV['RAILS_MASTER_KEY'] %>
-        sync: false
+      #- key: <%= ENV['RAILS_MASTER_KEY'] %>
+      # sync: false
